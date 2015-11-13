@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,html{
+	height:100%;
+}
+
+#productImageWrapper{
+	position:relative;
+	height:210px;
+	width:380px;
+}
+
+#cover{
+	width:100%;
+	height:100%;
+	position:fixed;
+	left:0;
+	top:0;
+	background:#333;
+	-moz-opacity:0.5;
+	-webkit-opacity:0.5;
+	opacity:0.5;
+	z-index:1000;
+}
+
+.ieLess9 #cover, .ie6 #cover{
+	filter: alpha(opacity = 50);
+	zoom:1;
+}
+
+#wrapper3D{
+	background:#FFF;
+	width:706px;
+	padding:10px;
+	height:530px;
+	position:fixed;
+	left:50%;
+	top:50%;
+	margin-top:-265px;
+	margin-left:-354px;
+	z-index:10001;
+	-moz-box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+	-webkit-box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+	box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+}
+
+#wrapper3D iframe{
+	width:708px;
+	height:531px;
+	border:0;
+	padding:0;
+}
+
+.ie6 #wrapper3D, .ie6 #cover, .ie6 #hider{
+	position:absolute;
+}
+
+#close3D{
+	position:absolute;
+	right:-25px;
+	top:-25px;
+	background:#FFF;
+	text-align:center;
+	font-size:18px;
+	color:#333;
+	height:20px;
+	width:20px;
+	display:block;
+	line-height:16px;
+	-moz-box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+	-webkit-box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+	box-shadow:0 0 12px rgba(51, 51, 51, 0.8);
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+
+#lens{
+	width:200px;
+	height:200px;
+	border:1px solid #CCC;
+	overflow:hidden;
+	position:absolute;
+	cursor:crosshair;
+	z-index:2000;
+	background:#FFF;
+	display:none;
+}
+
+#lens img{
+	position:absolute;
+}
+
+#hider{
+	width:100%;
+	height:100%;
+	position:fixed;
+	left:0;
+	top:0;
+	background:#FFF;
+	-moz-opacity:0;
+	-webkit-opacity:0;
+	opacity:0;
+	z-index:1000;
+}
+
+.ieLess9 #hider, .ie6 #hider{
+	filter: alpha(opacity = 0);
+	zoom:1;
+}
+
+#lensSign{
+	position:absolute;
+	left:352px;
+	top:180px;
+	display:none;
+}
+
+#thumbsWrapper img{
+	width:75px;
+	padding:6px;
+	border:0;
+	cursor:pointer;
+	margin-right:10px;
+	display:none;
+}
+
+#thumbsWrapper img.open3D{
+	margin-right:0;
+}
+
+#thumbsWrapper img.active{
+	padding:5px;
+	border:1px solid #CCC !important;
+}
+
+#thumbsWrapper{
+	padding-top:10px;
+	width:380px;
+}

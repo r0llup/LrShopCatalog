@@ -1,0 +1,3063 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0081)https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37331 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="robots" content="noindex">
+<meta name="robots" content="noarchive">
+    <title>LR Cosmetic Belgium BVBA</title>
+    
+<script type="text/javascript">
+<!--
+/*	
+if ( navigator.userAgent.toLowerCase().indexOf("opera") == -1 )
+{	 
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-iex-net.css' media='all'>");
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-iex-net.css' media='screen'>");
+	 
+}else{
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-opera.css' media='all'>");
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-opera.css' media='screen'>");
+}
+*/
+/*** BEGIN HELPERS ***/
+
+/* begin Remove Left&Right-Blanks */
+function trim(inputString)
+{
+  inputString = inputString.replace(/^ */,"");
+  inputString = inputString.replace(/ *$/,"");
+  return inputString;
+}
+/* end Remove Left&Right-Blanks */
+
+/* begin Check if input is numeric */
+function isNumeric(inputString)
+{
+   var i=0;
+   var j=(trim(inputString)).length;
+
+   if( j < 1 )
+   {
+   	return false;
+	}
+   for( ; i<j; i++ ) 
+   {
+   	if( ( inputString.charAt(i) < '0' ) || ( inputString.charAt(i) > '9' ) ) 
+   	{
+      return false;
+   	}
+   }
+
+   return true;
+}
+/* end Check if input is numeric */
+
+/*** END HELPERS ***/
+
+
+function countup(name) {
+        name.quantity.value ++;
+}
+function countdown(name) {
+        if ( name.quantity.value > 0) {
+         name.quantity.value --;
+        }
+}
+
+function checkquantity(name)
+{
+ var menge = name.quantity.value;
+
+ if ( menge.search(/\D/) != -1 || menge <= 0 )
+ {
+  alert ( "Veuillez noter le nombre de commande correct (uniquement des chiffres, grand zéro)!" );
+ }
+else {
+  	name.submit();
+ }
+}
+
+function checkquantity_new(name)
+{
+ alert(name);
+ var menge = name.quantity.value;
+
+ if ( menge.search(/\D/) != -1 || menge <= 0 )
+ {
+  alert ( "Veuillez noter le nombre de commande correct (uniquement des chiffres, grand zéro)!" );
+ }
+ else {
+  name.submit();
+ }
+}
+
+function searchlength()
+{
+  var inputString = document.searchForm.suche.value;
+  // Blanks entfernen
+  inputString = inputString.replace(/^ */,"");
+  inputString = inputString.replace(/ *$/,"");
+
+  var searchString = "";
+  for ( i=0; i<inputString.length; i++ )
+  {
+    if ( inputString.charAt(i) != "%" && inputString.charAt(i) != "*" )
+      {
+        searchString = searchString.concat(inputString.charAt(i));
+      }
+  }
+
+  document.searchForm.suche.value = searchString;
+
+  if ( searchString.length < 2 )
+  {
+    alert ("Bitte geben Sie einen Suchbegriff mit mindestens 2 Zeichen ein ( '%' und '*' dürfen nicht enthalten sein)!");
+    return false;
+  }
+
+  document.searchForm.submit();
+}
+
+function prepareBeraterNr()
+{
+	var customerNo = "";	
+	var code = "";
+	var checkOk=true;
+	customerNo = prepareCustomerNo(document.inputBerater.userField2.value);
+	code = document.inputBerater.userCode.value;
+	
+	if ( trim(customerNo).length == 0 || isNumeric(customerNo)==false)
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( trim(code).length == 0)
+	{
+		alert ("Bitte geben Sie Ihre Code-Nr. bzw. Ihr Passwort an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( checkOk)
+	{
+		document.inputBerater.userField2.value = customerNo;
+		document.inputBerater.submit();
+	}
+}
+
+function prepareKundenNr()
+{
+	var customerNo = "";	
+	var code = "";
+	var checkOk=true;
+	customerNo = prepareCustomerNo(document.inputEndkunde.userField2.value);
+	code = document.inputBerater.userCode.value;
+	if ( trim(customerNo).length == 0 || isNumeric(customerNo)==false)
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( trim(code).length == 0)
+	{
+		alert ("Bitte geben Sie Ihre Code-Nr. bzw. Ihr Passwort an.");
+		checkOk = false;
+		return;
+	}
+	
+	
+	if ( checkOk)
+	{
+		document.inputBerater.userField2.value = customerNo;
+		document.inputBerater.submit();
+	}
+}
+
+function prepareCustomerNo(customerNo)
+{
+	customerNo = customerNo.replace(/^ */,"");
+	customerNo = customerNo.replace(/ *$/,"");
+	var i = customerNo.indexOf('/');
+	if(i == -1) { i = customerNo.indexOf('\\'); }
+	if(i == -1) { i = customerNo.indexOf('-'); }
+	if(i != -1) { customerNo = customerNo.substr(i + 1); }
+	customerNo = customerNo.replace(/^0*/,"");
+	return customerNo;
+}
+
+
+function checkChallengeForm()
+{
+	var logonid = document.ResetPasswordForm.logonIdShow.value;
+	var email = document.ResetPasswordForm.challengeAnswer.value;
+	var checkOk = true;
+		
+	if ( trim(logonid)==0 || isNumeric(logonid)==false )
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk=false;
+		return;
+	}
+	
+	if ( trim(email)==0 )
+	{
+		alert ("Bitte geben Sie die E-Mail-Adresse an.");
+		checkOk=false;
+		return;
+	}
+	
+	if ( checkOk )
+	{
+		document.ResetPasswordForm.logonId.value = "01/"+logonid;
+		document.ResetPasswordForm.submit();
+	}
+	
+}
+
+/* ab hier PopUp-Definitionen */
+
+var F0;
+function variant_popup ( url )
+{
+   	F0 = popup=window.open( url, "variantWindow", "width=500,height=450,left=200,top=150, resizable=yes, scrollbars=yes");
+   	F0.focus();
+}
+
+var F1;
+function addCollectionOrderer(page, title)
+{
+	if(F1==null || F1.closed==true){
+ 		F1 = window.open(page, title, 'width=400,height=450,left=100,top=100, resizible=yes, menubar=no, scrollbars=yes, status=no, toolbar=no');
+	}else{
+		F1.focus();
+	}
+}
+
+var F2;
+function checkContactPagePopUpForOpen()
+{
+	 if(F2==null || F2.closed==true){
+	 	F2 = window.open('LRInteressent','Kundenkontakt', 'width=620,height=550,left=100,top=100, resizible=yes, menubar=no, scrollbars=no, status=no, toolbar=no');
+	 }else{
+	 	F2.focus();
+	 }
+}
+
+var TRANSLATION_POPUP;
+function showPageTranslation(url){
+	//alert(url);
+	TRANSLATION_POPUP=window.open(url, "TranslationPage", "width=700, height=500, resizable=yes, scrollbars=yes");
+	TRANSLATION_POPUP.focus();
+}
+
+function luhnCheck(cardnumber)
+{
+		if (cardnumber.length != 16)
+			return false;
+
+		var weight = 2;
+		var sum = 0;
+		for (position = cardnumber.length - 2; position >= 0; position--) {
+			digit = weight * cardnumber.charAt(position);
+			if (digit < 0)
+				return false;
+
+			sum += parseInt(digit / 10 + digit % 10);
+			weight = weight != 2 ? 2 : 1;
+		}
+
+		last_digit = cardnumber.charAt(cardnumber.length - 1);
+		return last_digit == (10 - sum % 10) % 10;
+}
+
+function checkCVC(cvc)
+{
+	 if ( cvc==null || cvc.length!=3 || ! cvc.match(/^\d+$/))
+	 	return false;
+	 else
+	 	return true;
+}
+
+function checkExpiryDate(cardmonth, cardyear)
+{
+	if(cardmonth.length==0){
+			alert("Gültigkeitsdatum: Monatsangabe fehlt.");
+			return false;
+	}else if(cardyear.length==0){
+			alert("Gültigkeitsdatum: Jahresangabe fehlt.");
+			return false;
+    }else{			
+		var today=new Date();
+		var month=today.getMonth()+1;
+		var year=today.getFullYear();
+	 	if ( (cardyear==year) && (cardmonth<month) ){
+			alert("Das Gültigkeitsdatum liegt in der Vergangenheit!");
+    		return false;
+    	}
+	}      		
+	return true;
+}      		
+
+function checkCreditCard(brand, number, cvc, month, year)
+{
+	if(brand.length!=1 || !luhnCheck(number) || !checkCVC(cvc) || !checkExpiryDate(month, year))
+		return false;
+	else
+		return true;
+}
+
+function switchDisplay(id)
+{
+	obj=document.getElementById(id);
+	if(obj.style.display=='none')
+		obj.style.display='';
+	else
+		obj.style.display='none';
+}
+
+/*
+var F10;
+function showPageTranslation ( url )
+{
+   	F10 = popup=window.open( url, "TranslationPage", "width=500, height=450, resizable=yes, scrollbars=yes");
+   	F10.focus();
+}
+*/
+
+function getPosition(element)
+/* der Aufruf dieser Funktion ermittelt die absoluten Koordinaten
+   des Objekts element */
+{
+	  var elem=element,tagname="",x=0,y=0;
+	  
+	/* solange elem ein Objekt ist und die Eigenschaft offsetTop enthaelt
+	   wird diese Schleife fuer das Element und all seine Offset-Eltern ausgefuehrt */
+	  while ((typeof(elem)=="object")&&(typeof(elem.tagName)!="undefined"))
+	  {
+	    y+=elem.offsetTop;     /* Offset des jeweiligen Elements addieren */
+	    x+=elem.offsetLeft;    /* Offset des jeweiligen Elements addieren */
+	    tagname=elem.tagName.toUpperCase(); /* tag-Name ermitteln, Grossbuchstaben */
+	
+	/* wenn beim Body-tag angekommen elem fuer Abbruch auf 0 setzen */
+	    if (tagname=="BODY")
+	      elem=0;
+	
+	/* wenn elem ein Objekt ist und offsetParent enthaelt
+	   Offset-Elternelement ermitteln */
+	    if (typeof(elem)=="object")
+	      if (typeof(elem.offsetParent)=="object")
+	        elem=elem.offsetParent;
+  }
+
+/* Objekt mit x und y zurueckgeben */
+  position=new Object();
+  position.x=x;
+  position.y=y;
+  return position;
+}
+
+function alertPosition(elementId)
+	/* gibt eine Meldung mit x und y des zu elementId gehoerenden Elements aus */
+	{
+	  var a,element;
+	
+	/* Element-Objekt zur ID ermitteln */
+	  element=document.getElementById(elementId);
+	 
+	/* Position bestimmen und melden */
+	  a=getPosition(element);
+	  window.alert("Position "+elementId+": ("+a.x+","+a.y+")");
+}
+
+function resizeWinTo( idOfDiv) 
+{
+        var inc=10;
+        var addWidth=10;
+        var oH = getRefToDivMod( idOfDiv ); if( !oH ) { return false; }
+        var oW = oH.clip ? oH.clip.width : oH.offsetWidth;
+        var oH = oH.clip ? oH.clip.height : oH.offsetHeight; if( !oH ) { return false; }
+        var x = window; x.resizeTo( oW + inc, oH + inc );
+        var myW = 0, myH = 0, d = x.document.documentElement, b = x.document.body;
+        if( x.innerWidth ) { myW = x.innerWidth; myH = x.innerHeight; }
+        else if( d && d.clientWidth ) { myW = d.clientWidth; myH = d.clientHeight; }
+        else if( b && b.clientWidth ) { myW = b.clientWidth; myH = b.clientHeight; }
+        if( window.opera && !document.childNodes ) { myW += 16; }
+        x.resizeTo( oW + addWidth + ( ( oW + inc ) - myW ), oH + addWidth + ( (oH + inc ) - myH ) );
+        /*
+        x.resizeTo( oW = oW +( ( oW + inc ) - myW ), oH = oH +( (oH + inc ) - myH ) );
+        var scW = screen.availWidth ? screen.availWidth : screen.width;
+        var scH = screen.availHeight ? screen.availHeight : screen.height;
+        x.moveTo(Math.round((scW-oW)/2),Math.round((scH-oH)/2));
+        */
+}
+
+function getRefToDivMod( divID, oDoc ) 
+{
+	if( !oDoc ) { oDoc = document; }
+	if( document.layers ) {
+        if( oDoc.layers[divID] ) { return oDoc.layers[divID]; } else {
+            for( var x = 0, y; !y && x < oDoc.layers.length; x++ ) {
+                    y = getRefToDivNest(divID,oDoc.layers[x].document); }
+            return y; } }
+	if( document.getElementById ) { return oDoc.getElementById(divID); }
+	if( document.all ) { return oDoc.all[divID]; }
+	return document[divID];
+}
+// -->
+</script>
+
+
+
+    <script src="./Suppléments alimentaires_files/prototype.js" type="text/javascript"></script>
+    <script src="./Suppléments alimentaires_files/scriptaculous.js" type="text/javascript"></script><script type="text/javascript" src="./Suppléments alimentaires_files/effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Suppléments alimentaires_files/basic.css">
+    <link rel="stylesheet" type="text/css" href="./Suppléments alimentaires_files/shop.css">
+    
+
+
+
+
+
+<!-- -----------------TYPO SCRIPT part (start)-------------------- -->
+
+<script type="text/javascript" src="./Suppléments alimentaires_files/jquery-1.4.2.min.js"></script>
+<!-- -----------------TYPO SCRIPT part (end)-------------------- -->
+
+
+    <link rel="stylesheet" type="text/css" href="./Suppléments alimentaires_files/views.css"> 
+
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+<!-- BODY -->
+
+
+
+
+
+
+
+<!--TYPO BODY 1 part (start)-->
+<body class="home smallHeader">
+<!--TYPO BODY 1 part (end)-->
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index: 1000;"></div>
+
+
+<div id="completeDisplay">
+    
+
+
+
+
+
+
+<!--TYPO BODY 2 part (start)-->
+<div id="top">
+    <div id="greeting">
+            <p>
+                Shop en ligne <span>LR Belgium</span><br>
+                <span>Monsieur Khassan Khadiev</span>
+            </p>
+            <a href="https://shop.lrworld.com/lrshop/logout.do?country=BE_fr" class="button">Se déconnecter</a>
+        </div>
+        <!-- TOPNAV (start) -->
+        <div id="topNav">
+            <ul>
+                <li class="linkPublic"><a href="http://www.lrworld.com/fr/" target="_blank">Voir la page d'accueil LR</a></li>
+                <li class="linkExtranet"><a href="https://www.my-lrworld.com/fr/">Voir le portail pour partenaires</a></li>
+            </ul>
+        </div>
+        <!-- TOPNAV (end) -->
+    </div>
+    <div id="wrapper">
+        <div id="header">
+            <a id="home" href="https://shop.lrworld.com/lrshop/chooseCatalog.do">Accueil</a>
+            <div id="teaser">
+                <div class="slide" style="background-image:url(https://www.my-lrworld.com/fileadmin/my-lrworld/content/global/Shop/Header_Shop.jpg);"></div>
+            </div>
+            <div id="mainNav">&nbsp;</div>
+        </div>
+<!--TYPO BODY 2 part (end)-->
+
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" id="breadcrum" style="padding-right: 134px;">
+        <tbody><tr>
+            
+                
+                <td style="width: 200px;"></td>
+            
+            <td align="left">
+                
+                    <a href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1894">Collection Santé</a>
+                    <a href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1894&categoryKey=37331">&nbsp;&nbsp;/&nbsp;&nbsp;Suppléments alimentaires</a>
+                
+            </td>
+        </tr>
+    </tbody></table>
+    <table id="contentTable" cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <tr>
+                <td valign="top">
+                	
+                	
+              
+                		
+
+
+
+
+
+
+
+
+<!-- BEG - menu left -->
+
+
+<table cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr>
+        <td align="left" valign="top" style="border: 1px solid #B2B5B7;">
+            <table style="width: 174px; cursor: pointer; background-image: url(https://shop.lrworld.com/lrshopStatic/images_NEW/shop/warenkorb_emptyX.jpg)" cellspacing="3">
+                <tbody><tr style="height: 93px;" onclick="javascript:window.location=&#39;/lrshop/showQuickEntry.do&#39;;">
+                    <td valign="top" align="left">Contenu de votre panier<br>
+                        0&nbsp;Article | 0,00 €
+                        <br><br><a href="https://shop.lrworld.com/lrshop/showQuickEntry.do" style="font-size: 11px;">Panier &amp;<br>Commande<br>Express</a>
+                    </td>
+                </tr>
+                <tr><td valign="bottom" align="left" id="searchformShop">
+
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+    function prepareSearchBox(){if (document.SearchFormShop.searchString.value=="Recherche")document.SearchFormShop.searchString.value="";}
+//--></script>
+
+
+
+<div id="searchformboxShop" align="left">
+    <span style="font-size: 10px;">Recherche produit: </span>
+    <form name="SearchFormShop" action="https://shop.lrworld.com/lrshop/search.do" method="post" style="margin: 0px; padding: 0px;">
+        <input maxlength="50" onfocus="javascript:prepareSearchBox()" name="searchString" type="text" value="Recherche" class="searching-form" style="float:left">
+        <input type="hidden" name="searchMode" value="0">
+        <input type="hidden" name="startingRow" value="">
+        <input type="image" name="tx_shop_indexedsearch__submit_button__" value="Submit" src="./Suppléments alimentaires_files/button_search.gif" id="tx_shop_indexedsearch__submit_button__" alt="search" style="padding-left: 2px;">
+    </form>
+</div></td></tr>
+            </tbody></table>
+        </td>
+    </tr>
+    
+    <tr>
+        <td id="subnaviContent">
+            
+<!-- BEG - JSP-Page: ceCatalogStructureMenu_jsp -->
+
+
+
+
+<!-- BEG - catalog/category structure -->
+<div>
+    <h2><a href="https://shop.lrworld.com/lrshop/chooseCatalog.do">LR-Shop</a><br><br></h2>
+    <ul>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1922">Collections</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1905">Collection Beauté</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1894">Collection Santé</a>
+                
+                    
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37306">Aloe Vera Drinking Gel</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37332">Mind Master</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                                <ul>
+                                	<li class="subnavi-content-0-active">
+                                		<a href="./Suppléments alimentaires_files/Suppléments alimentaires.html">Suppléments alimentaires</a>
+                                	</li>
+                                </ul>
+                            
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37395">Body Mission</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37335">Figu Activ</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37336">Aloe Vera Animaux</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                     
+                    
+                    <br>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1555">LR World Octobre 2015</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1904">Echantillons</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1899">Aides à la vente</a>
+                
+            </li>
+        
+    </ul>
+</div>
+<!-- END - catalog/category structure -->
+<!-- END - JSP-Page: ceCatalogStructureMenu_jsp -->
+            
+        </td>
+    </tr>
+    
+</tbody></table>
+<!-- END - menu left -->
+
+                	
+                </td>
+                <td valign="top" width="595" style="padding-left: 25px;">
+                    
+
+
+
+
+
+
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr><td><!--  BEG - category details -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td width="5">&nbsp;</td>
+        <td width="395" align="left" valign="top"><span class="headTitle">Suppléments alimentaires</span><br></td>
+        <td width="20">&nbsp;</td>
+        <td valign="top"><img width="175" height="95" src="./Suppléments alimentaires_files/b15_07_Nutrition.jpg" alt="Category image"></td>
+    </tr>
+</tbody></table>
+<!--  END - category details --></td></tr>
+    <tr><td height="20">&nbsp;</td></tr>
+    <tr>
+        <td align="center">
+        
+            <table width="100%">
+                <tbody><tr><td height="10" style="border-top: 1px solid #B2B5B7">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_0">
+                        <td width="100%" id="product_80338-299">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25632&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Super Omega 3 activ" alt="Super Omega 3 activ" border="0" src="./Suppléments alimentaires_files/80338-299_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Super Omega 3 activ</b><br>
+                                        <span id="effect_80338-299" ondblclick="alert(&#39;80338-299 | 0080338299 | 001&#39;)">Art. N°&nbsp;80338-299</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 27,98 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 26,40 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 44,00 GV: 23,36<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25632&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_0" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_0" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80338">
+                                            <input type="hidden" name="variantNo" value="299">
+                                            <input type="hidden" name="itemNo" value="0080338299">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_0)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_0)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_0)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_1">
+                        <td width="100%" id="product_80144-11">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16796&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Super Omega 3 aktiv - par 4" alt="Super Omega 3 aktiv - par 4" border="0" src="./Suppléments alimentaires_files/80144-11_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Super Omega 3 aktiv - par 4</b><br>
+                                        <span id="effect_80144-11" ondblclick="alert(&#39;80144-11 | 0080144011 | 004&#39;)">Art. N°&nbsp;80144-11</span><br><br>
+                                        Paquet de 4<br>4 x 60 capsules 
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 103,35 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 97,50 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 146,00 GV: 76,67<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16796&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_1" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_1" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80144">
+                                            <input type="hidden" name="variantNo" value="11">
+                                            <input type="hidden" name="itemNo" value="0080144011">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_1)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_1)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_1)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_2">
+                        <td width="100%" id="product_80190-11">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16348&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Freedom Gelenk Plus BeNeFLux" alt="Freedom Gelenk Plus BeNeFLux" border="0" src="./Suppléments alimentaires_files/80190-11_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Freedom Gelenk Plus BeNeFLux</b><br>
+                                        <span id="effect_80190-11" ondblclick="alert(&#39;80190-11 | 0080190011 | 001&#39;)">Art. N°&nbsp;80190-11</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 21,41 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 20,20 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 36,00 GV: 18,69<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16348&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_2" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_2" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80190">
+                                            <input type="hidden" name="variantNo" value="11">
+                                            <input type="hidden" name="itemNo" value="0080190011">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_2)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_2)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_2)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_3">
+                        <td width="100%" id="product_80192-11">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16795&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Freedom Plus - Capsules - par 3" alt="Freedom Plus - Capsules - par 3" border="0" src="./Suppléments alimentaires_files/80192-11_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Freedom Plus - Capsules - par 3</b><br>
+                                        <span id="effect_80192-11" ondblclick="alert(&#39;80192-11 | 0080192011 | 004&#39;)">Art. N°&nbsp;80192-11</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 60,63 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 57,20 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 98,00 GV: 51,33<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16795&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_3" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_3" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80192">
+                                            <input type="hidden" name="variantNo" value="11">
+                                            <input type="hidden" name="itemNo" value="0080192011">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_3)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_3)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_3)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_4">
+                        <td width="100%" id="product_80360-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15030&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Colostrum Compact " alt="Colostrum Compact " border="0" src="./Suppléments alimentaires_files/80360-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Colostrum Compact </b><br>
+                                        <span id="effect_80360-99" ondblclick="alert(&#39;80360-99 | 0080360099 | 001&#39;)">Art. N°&nbsp;80360-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 41,34 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 39,00 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 63,00 GV: 33,36<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15030&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_4" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_4" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80360">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080360099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_4)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_4)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_4)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_5">
+                        <td width="100%" id="product_80361-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15031&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Colostrum Direct " alt="Colostrum Direct " border="0" src="./Suppléments alimentaires_files/80361-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Colostrum Direct </b><br>
+                                        <span id="effect_80361-99" ondblclick="alert(&#39;80361-99 | 0080361099 | 001&#39;)">Art. N°&nbsp;80361-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 28,51 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 26,90 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 47,00 GV: 24,67<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 125 ml
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15031&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_5" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_5" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80361">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080361099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_5)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_5)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_5)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_6">
+                        <td width="100%" id="product_80363-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15033&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Colostrum Direct - par 2" alt="Colostrum Direct - par 2" border="0" src="./Suppléments alimentaires_files/80363-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Colostrum Direct - par 2</b><br>
+                                        <span id="effect_80363-99" ondblclick="alert(&#39;80363-99 | 0080363099 | 004&#39;)">Art. N°&nbsp;80363-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 49,90 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 47,08 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 88,00 GV: 41,17<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15033&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_6" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_6" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80363">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080363099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_6)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_6)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_6)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_7">
+                        <td width="100%" id="product_80364-11">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16184&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Colostrum Direct - par 6" alt="Colostrum Direct - par 6" border="0" src="./Suppléments alimentaires_files/80364-11_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Colostrum Direct - par 6</b><br>
+                                        <span id="effect_80364-11" ondblclick="alert(&#39;80364-11 | 0080364011 | 004&#39;)">Art. N°&nbsp;80364-11</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 163,24 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 154,00 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 244,00 GV: 128,45<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 125 ml
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16184&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_7" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_7" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80364">
+                                            <input type="hidden" name="variantNo" value="11">
+                                            <input type="hidden" name="itemNo" value="0080364011">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_7)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_7)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_7)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_8">
+                        <td width="100%" id="product_80362-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15032&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Colostrum Pearls " alt="Colostrum Pearls " border="0" src="./Suppléments alimentaires_files/80362-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Colostrum Pearls </b><br>
+                                        <span id="effect_80362-99" ondblclick="alert(&#39;80362-99 | 0080362099 | 001&#39;)">Art. N°&nbsp;80362-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 41,34 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 39,00 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 63,00 GV: 33,36<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 g
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=15032&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_8" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_8" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80362">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080362099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_8)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_8)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_8)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_9">
+                        <td width="100%" id="product_80325-399">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=17954&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Cistus Incanus Capsules " alt="Cistus Incanus Capsules " border="0" src="./Suppléments alimentaires_files/80325-399_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Cistus Incanus Capsules </b><br>
+                                        <span id="effect_80325-399" ondblclick="alert(&#39;80325-399 | 0080325399 | 001&#39;)">Art. N°&nbsp;80325-399</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 27,98 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 26,40 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 44,00 GV: 23,36<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=17954&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_9" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_9" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80325">
+                                            <input type="hidden" name="variantNo" value="399">
+                                            <input type="hidden" name="itemNo" value="0080325399">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_9)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_9)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_9)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_10">
+                        <td width="100%" id="product_80404-211">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16213&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Cistus Incanus Thé BeNeFLux" alt="Cistus Incanus Thé BeNeFLux" border="0" src="./Suppléments alimentaires_files/80404-211_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Cistus Incanus Thé BeNeFLux</b><br>
+                                        <span id="effect_80404-211" ondblclick="alert(&#39;80404-211 | 0080404211 | 001&#39;)">Art. N°&nbsp;80404-211</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 11,98 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 11,30 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 19,00 GV: 10,00<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 250 g
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16213&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_10" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_10" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80404">
+                                            <input type="hidden" name="variantNo" value="211">
+                                            <input type="hidden" name="itemNo" value="0080404211">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_10)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_10)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_10)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_11">
+                        <td width="100%" id="product_80142-111">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16214&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Cistus Incanus Capsules par 3" alt="Cistus Incanus Capsules par 3" border="0" src="./Suppléments alimentaires_files/80142-111_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Cistus Incanus Capsules par 3</b><br>
+                                        <span id="effect_80142-111" ondblclick="alert(&#39;80142-111 | 0080142111 | 004&#39;)">Art. N°&nbsp;80142-111</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 78,55 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 74,10 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 117,00 GV: 61,71<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 60 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16214&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_11" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_11" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80142">
+                                            <input type="hidden" name="variantNo" value="111">
+                                            <input type="hidden" name="itemNo" value="0080142111">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_11)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_11)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_11)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_12">
+                        <td width="100%" id="product_80370-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=14111&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Probiotic 12" alt="Probiotic 12" border="0" src="./Suppléments alimentaires_files/80370-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Probiotic 12</b><br>
+                                        <span id="effect_80370-99" ondblclick="alert(&#39;80370-99 | 0080370099 | 001&#39;)">Art. N°&nbsp;80370-99</span><br><br>
+                                        La qualité de vie commence dans les intestins. 
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 28,73 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 27,10 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 46,00 GV: 23,95<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 30 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=14111&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_12" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_12" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80370">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080370099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_12)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_12)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_12)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_13">
+                        <td width="100%" id="product_80373-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=14112&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Probiotic 12 - par 3" alt="Probiotic 12 - par 3" border="0" src="./Suppléments alimentaires_files/80373-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Probiotic 12 - par 3</b><br>
+                                        <span id="effect_80373-99" ondblclick="alert(&#39;80373-99 | 0080373099 | 004&#39;)">Art. N°&nbsp;80373-99</span><br><br>
+                                        Commencez avec une cure de 3 mois. 
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 78,44 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 74,00 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 116,00 GV: 61,15<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=14112&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_13" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_13" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80373">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080373099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_13)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_13)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_13)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_14">
+                        <td width="100%" id="product_80331-111">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16209&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Reishi Plus Capsules BeNeFLux" alt="Reishi Plus Capsules BeNeFLux" border="0" src="./Suppléments alimentaires_files/80331-111_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Reishi Plus Capsules BeNeFLux</b><br>
+                                        <span id="effect_80331-111" ondblclick="alert(&#39;80331-111 | 0080331111 | 001&#39;)">Art. N°&nbsp;80331-111</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 27,98 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 26,40 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 44,00 GV: 23,36<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 30 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16209&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_14" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_14" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80331">
+                                            <input type="hidden" name="variantNo" value="111">
+                                            <input type="hidden" name="itemNo" value="0080331111">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_14)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_14)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_14)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_15">
+                        <td width="100%" id="product_80147-111">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16210&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Reishi Plus - Set par 3 BeNeFLu" alt="Reishi Plus - Set par 3 BeNeFLu" border="0" src="./Suppléments alimentaires_files/80147-111_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Reishi Plus - Set par 3 BeNeFLu</b><br>
+                                        <span id="effect_80147-111" ondblclick="alert(&#39;80147-111 | 0080147111 | 004&#39;)">Art. N°&nbsp;80147-111</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 78,65 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 74,20 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 117,00 GV: 61,71<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 30 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16210&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_15" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_15" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80147">
+                                            <input type="hidden" name="variantNo" value="111">
+                                            <input type="hidden" name="itemNo" value="0080147111">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_15)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_15)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_15)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_16">
+                        <td width="100%" id="product_80102-199">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25601&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="ProBalance " alt="ProBalance " border="0" src="./Suppléments alimentaires_files/80102-199_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ProBalance </b><br>
+                                        <span id="effect_80102-199" ondblclick="alert(&#39;80102-199 | 0080102199 | 001&#39;)">Art. N°&nbsp;80102-199</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 23,74 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 22,40 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 38,00 GV: 20,00<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 360 comprimé (s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25601&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_16" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_16" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80102">
+                                            <input type="hidden" name="variantNo" value="199">
+                                            <input type="hidden" name="itemNo" value="0080102199">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_16)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_16)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_16)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_17">
+                        <td width="100%" id="product_80108-11">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16800&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="ProBalance - Set par 3" alt="ProBalance - Set par 3" border="0" src="./Suppléments alimentaires_files/80108-11_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ProBalance - Set par 3</b><br>
+                                        <span id="effect_80108-11" ondblclick="alert(&#39;80108-11 | 0080108011 | 004&#39;)">Art. N°&nbsp;80108-11</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 66,36 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 62,60 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 94,00 GV: 50,18<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 360 Capsule(s)
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=16800&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_17" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_17" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80108">
+                                            <input type="hidden" name="variantNo" value="11">
+                                            <input type="hidden" name="itemNo" value="0080108011">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_17)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_17)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_17)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_18">
+                        <td width="100%" id="product_80301-299">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=13966&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Vita Aktiv " alt="Vita Aktiv " border="0" src="./Suppléments alimentaires_files/80301-299_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Vita Aktiv </b><br>
+                                        <span id="effect_80301-299" ondblclick="alert(&#39;80301-299 | 0080301299 | 001&#39;)">Art. N°&nbsp;80301-299</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 14,31 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 13,50 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 23,00 GV: 12,18<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+            <tr>
+                <td align="left">
+                    Contenu: 150 ml
+                    
+                </td>
+            </tr>
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=13966&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_18" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_18" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80301">
+                                            <input type="hidden" name="variantNo" value="299">
+                                            <input type="hidden" name="itemNo" value="0080301299">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_18)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_18)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_18)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_19">
+                        <td width="100%" id="product_80510-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=24285&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Vita Aktiv Tropic" alt="Vita Aktiv Tropic" border="0" src="./Suppléments alimentaires_files/80510-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Vita Aktiv Tropic</b><br>
+                                        <span id="effect_80510-99" ondblclick="alert(&#39;80510-99 | 0080510099 | 001&#39;)">Art. N°&nbsp;80510-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 14,31 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 13,50 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 22,00 GV: 12,18<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=24285&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_19" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_19" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80510">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080510099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_19)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_19)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_19)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_20">
+                        <td width="100%" id="product_80512-99">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=24360&catalogId=1894&categoryKey=37331">
+                                         
+                                        
+                                            <img title="Vita Aktiv Tropic - par 3" alt="Vita Aktiv Tropic - par 3" border="0" src="./Suppléments alimentaires_files/80512-99_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Vita Aktiv Tropic - par 3</b><br>
+                                        <span id="effect_80512-99" ondblclick="alert(&#39;80512-99 | 0080512099 | 004&#39;)">Art. N°&nbsp;80512-99</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 39,11 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 36,90 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 50,00 GV: 27,77<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=24360&catalogId=1894&categoryKey=37331">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_20" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_20" method="post">
+                                            <input type="hidden" name="catalogId" value="1894">
+                                            <input type="hidden" name="categoryKey" value="37331">
+                                            <input type="hidden" name="articleNo" value="80512">
+                                            <input type="hidden" name="variantNo" value="99">
+                                            <input type="hidden" name="itemNo" value="0080512099">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_20)"><img src="./Suppléments alimentaires_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_20)"><img src="./Suppléments alimentaires_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_20)"><img src="./Suppléments alimentaires_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="55e35f073297a3cc75a310eb17a26697">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+            </tbody></table>
+        
+        
+        </td>
+    </tr>
+</tbody></table>
+<script type="text/javascript">
+<!--
+var lnk=window.location.href;
+if(lnk.indexOf('#bestellen')!=-1)
+{
+    var ankerpos=lnk.indexOf('#');
+    var ankerid=lnk.substr(ankerpos+1);
+    new Effect.Highlight(ankerid, {duration:2, startcolor: "#BCD0A1"});
+}
+else if(lnk.indexOf('#product_')!=-1)
+{
+    var ankerpos=lnk.indexOf('#product_');
+    var ankerid=lnk.substr(ankerpos+9);
+    ankerid='effect_' + ankerid;
+    new Effect.Scale( ankerid, 300,{duration: 2.0, transition: Effect.Transitions.reverse});
+}
+//-->
+</script>
+                </td>
+            </tr>
+        </tbody>
+    </table><br><br>
+    
+
+
+
+
+
+
+<!--TYPO FOOTER part (start)-->
+    <div id="pageFooter">
+        <a id="lrgkf" href="http://www.lr-global-kids-fund.com/" target="_blank">LR GLOBAL KIDS FUND</a>
+        <div id="footerAction">
+            <a id="print" href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1894&categoryKey=37331#" onclick="window.print(); return false;">Imprimer</a>
+        </div>
+        <ul><li><a href="http://www.my-lrworld.com/fr/belgium/imprint/">Imprint</a></li><li><a href="http://shop.lrworld.com/lrshopStatic/html/BE/fr/agb.html">AGBs</a></li><li><a href="http://www.my-lrworld.com/fr/belgium/contact/">Contact</a></li></ul>
+    </div>
+</div>
+<div id="copyright">Copyright: LR Health &amp; Beauty Systems, 2011</div>
+<!--TYPO FOOTER part (end)-->
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://ssl.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+	var pageTracker = _gat._getTracker("UA-1717611-3");	pageTracker._trackPageview();
+	var pageTracker2 = _gat._getTracker("UA-1717611-5"); pageTracker2._setDomainName(".lrworld.com"); pageTracker2._setAllowHash(false); pageTracker2._trackPageview();
+} catch(err) {}	
+</script>
+
+<!-- END - JSP-Page: siteLayout_jsp -->
+
+</body></html>

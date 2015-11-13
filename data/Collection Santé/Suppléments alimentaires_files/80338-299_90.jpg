@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>Wartung | Offizieller LR Online Shop</title>
+	<link rel="shortcut icon" href="/EComShopMaintenance/images/wartung/favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="/EComShopMaintenance/images/wartung/favicon.ico" type="image/x-icon"/>
+	<link rel="canonical" href="https://shop.lrworld.com/" />
+
+	<link rel="stylesheet" href="/EComShopMaintenance/css/503.css" media="all">
+
+	<script src="/EComShopMaintenance/js/modernizr.custom.js"></script>
+	<script src="/EComShopMaintenance/js/picturefill.js"></script>
+	<script src="/EComShopMaintenance/js/media.match.min.js"></script>
+	<script src="/EComShopMaintenance/js/enquire.js"></script>
+</head>
+<body>
+    <div class="page wartung">
+
+        <div role="main">
+            <div class="content-wrapper">
+
+                <div class="component-wrapper">
+                    <span class="teaser-image" data-picture data-alt="Wartung">
+                        <span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/teaser_wartung_29em.jpg"></span>
+                        <span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/teaser_wartung_29em_2x.jpg" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>      
+                        <span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/teaser_wartung_64em.jpg" data-media="(min-width: 39.69em)"></span>
+                        <span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/teaser_wartung_64em_2x.jpg" data-media="(min-width: 39.69em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 39.69em) and (min-device-pixel-ratio: 2.0)"></span>
+                        <!--[if (lt IE 9) & (!IEMobile)]>
+                            <span data-src="/EComShopMaintenance/images/wartung/teaser_wartung_64em.jpg"></span>
+                        <![endif]-->
+                        <noscript><img src="/EComShopMaintenance/images/wartung/teaser_wartung_64em.jpg" alt="Wartung"></noscript>
+                    </span>
+                </div>
+
+                <div class="component-wrapper">
+                    <h2 class="centered"><span>Bald wieder für Sie da!</span></h2>
+                    <p>Zur Zeit wird die Website gewartet und erstrahlt bald in neuem Glanz! Bitte haben Sie ein wenig Geduld, wir sind so schnell wie möglich wieder für Sie da. Vielen Dank für Ihr Verständnis.</p>
+                </div>
+
+                <div class="component-wrapper">
+                    <h2 class="centered"><span>Exklusive Marken bei LR</span></h2>
+                    <ul class="brand-list">
+						<li>
+							<span data-picture data-alt="Aloe Vera">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_aloe_vera_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/wartung/wartung/logo_aloe_vera_29em_2x.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_aloe_vera_48em.png" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/wartung/wartung/logo_aloe_vera_48em_2x.png" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_aloe_vera_64em.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_aloe_vera_64em_2x.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+						    		<span data-src="/EComShopMaintenance/images/wartung/logo_aloe_vera_64em.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_aloe_vera_64em.png" alt="Aloe Vera"></noscript>
+							</span>
+						</li>
+                       	<li>
+                       		<span data-picture data-alt="Bruce Willis">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_29em_2x.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_48em.png" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_48em_2x.png" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_64em.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_64em_2x.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+									<span data-src="/EComShopMaintenance/images/wartung/logo_bruce_willis_64em.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_bruce_willis_64em.png" alt="Bruce Willis"></noscript>
+							</span>
+						</li>
+						<li>
+							<span data-picture data-alt="Karolina Kurkova">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_karolina_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/logo_karolina_29em_2x.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_karolina_48em.png" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/images/wartung/logo_karolina_48em_2x.png" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_karolina_64em.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_karolina_64em_2x.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+									<span data-src="/EComShopMaintenance/images/wartung/logo_karolina_64em.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_karolina_64em.png" alt="Karolina Kurkova"></noscript>
+							</span>
+						</li>
+						<li>
+							<span data-picture data-alt="Mind Master">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_29em_2x.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_48em.png" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_48em_2x.png" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_64em.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_mind_master_64em_2x.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+									<span data-src="/EComShopMaintenance/images/wartung/logo_mind_master_64em.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_mind_master_64em.png" alt="Mind Master"></noscript>
+							</span>
+						</li>
+                        <li>
+                        	<span data-picture data-alt="Deluxe">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_deluxe_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/logo_deluxe_29em.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_deluxe_48em.jpg" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/images/wartung/logo_deluxe_48em.jpg" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_deluxe.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_deluxe.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+									<span data-src="/EComShopMaintenance/images/wartung/logo_deluxe.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_deluxe.png" alt="Deluxe"></noscript>
+							</span>
+						</li>
+						<li>
+							<span data-picture data-alt="Lovingly">
+								<span class="picture-mobil" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_29em.png"></span>
+								<span class="picture-mobil retina" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_29em_2x.png" data-media="(-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-tablet" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_48em.png" data-media="(min-width: 29.75em)"></span>
+								<span class="picture-tablet retina" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_48em_2x.png" data-media="(min-width: 29.75em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 29.75em) and (min-device-pixel-ratio: 2.0)"></span>
+								<span class="picture-desktop" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_64em.png" data-media="(min-width: 50em)"></span>
+								<span class="picture-desktop retina" data-src="/EComShopMaintenance/images/wartung/logo_lovingly_64em_2x.png" data-media="(min-width: 50em) and (-webkit-min-device-pixel-ratio: 2.0), (min-width: 50em) and (min-device-pixel-ratio: 2.0)"></span>
+								<!--[if (lt IE 9) & (!IEMobile)]>
+									<span data-src="/EComShopMaintenance/images/wartung/logo_lovingly_64em.png"></span>
+								<![endif]-->
+								<noscript><img src="/EComShopMaintenance/images/wartung/logo_lovingly_64em.png" alt="Lovingly"></noscript>
+							</span>
+						</li>
+                    </ul>
+				</div>
+                <div class="component-wrapper wartungswrapper">
+                    <a href="http://www.lrworld.com/" class="btn btn-wartung"><span>Zu unserer Unternehmensseite</span></a>
+                </div>
+             </div>
+        </div>
+    </div>
+	<script src="/EComShopMaintenance/js/jquery-1.11.1.min.js"></script>
+	<script src="/EComShopMaintenance/js/app.js"></script>
+	<script src="/EComShopMaintenance/js/picker.translations/de_DE.js"></script>
+</body>
+</html>

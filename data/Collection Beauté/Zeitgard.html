@@ -1,0 +1,1689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0081)https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37481 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="robots" content="noindex">
+<meta name="robots" content="noarchive">
+    <title>LR Cosmetic Belgium BVBA</title>
+    
+<script type="text/javascript">
+<!--
+/*	
+if ( navigator.userAgent.toLowerCase().indexOf("opera") == -1 )
+{	 
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-iex-net.css' media='all'>");
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-iex-net.css' media='screen'>");
+	 
+}else{
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-opera.css' media='all'>");
+	  document.write("<link rel='stylesheet' href='/lrshop/js/lr-style-opera.css' media='screen'>");
+}
+*/
+/*** BEGIN HELPERS ***/
+
+/* begin Remove Left&Right-Blanks */
+function trim(inputString)
+{
+  inputString = inputString.replace(/^ */,"");
+  inputString = inputString.replace(/ *$/,"");
+  return inputString;
+}
+/* end Remove Left&Right-Blanks */
+
+/* begin Check if input is numeric */
+function isNumeric(inputString)
+{
+   var i=0;
+   var j=(trim(inputString)).length;
+
+   if( j < 1 )
+   {
+   	return false;
+	}
+   for( ; i<j; i++ ) 
+   {
+   	if( ( inputString.charAt(i) < '0' ) || ( inputString.charAt(i) > '9' ) ) 
+   	{
+      return false;
+   	}
+   }
+
+   return true;
+}
+/* end Check if input is numeric */
+
+/*** END HELPERS ***/
+
+
+function countup(name) {
+        name.quantity.value ++;
+}
+function countdown(name) {
+        if ( name.quantity.value > 0) {
+         name.quantity.value --;
+        }
+}
+
+function checkquantity(name)
+{
+ var menge = name.quantity.value;
+
+ if ( menge.search(/\D/) != -1 || menge <= 0 )
+ {
+  alert ( "Veuillez noter le nombre de commande correct (uniquement des chiffres, grand zéro)!" );
+ }
+else {
+  	name.submit();
+ }
+}
+
+function checkquantity_new(name)
+{
+ alert(name);
+ var menge = name.quantity.value;
+
+ if ( menge.search(/\D/) != -1 || menge <= 0 )
+ {
+  alert ( "Veuillez noter le nombre de commande correct (uniquement des chiffres, grand zéro)!" );
+ }
+ else {
+  name.submit();
+ }
+}
+
+function searchlength()
+{
+  var inputString = document.searchForm.suche.value;
+  // Blanks entfernen
+  inputString = inputString.replace(/^ */,"");
+  inputString = inputString.replace(/ *$/,"");
+
+  var searchString = "";
+  for ( i=0; i<inputString.length; i++ )
+  {
+    if ( inputString.charAt(i) != "%" && inputString.charAt(i) != "*" )
+      {
+        searchString = searchString.concat(inputString.charAt(i));
+      }
+  }
+
+  document.searchForm.suche.value = searchString;
+
+  if ( searchString.length < 2 )
+  {
+    alert ("Bitte geben Sie einen Suchbegriff mit mindestens 2 Zeichen ein ( '%' und '*' dürfen nicht enthalten sein)!");
+    return false;
+  }
+
+  document.searchForm.submit();
+}
+
+function prepareBeraterNr()
+{
+	var customerNo = "";	
+	var code = "";
+	var checkOk=true;
+	customerNo = prepareCustomerNo(document.inputBerater.userField2.value);
+	code = document.inputBerater.userCode.value;
+	
+	if ( trim(customerNo).length == 0 || isNumeric(customerNo)==false)
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( trim(code).length == 0)
+	{
+		alert ("Bitte geben Sie Ihre Code-Nr. bzw. Ihr Passwort an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( checkOk)
+	{
+		document.inputBerater.userField2.value = customerNo;
+		document.inputBerater.submit();
+	}
+}
+
+function prepareKundenNr()
+{
+	var customerNo = "";	
+	var code = "";
+	var checkOk=true;
+	customerNo = prepareCustomerNo(document.inputEndkunde.userField2.value);
+	code = document.inputBerater.userCode.value;
+	if ( trim(customerNo).length == 0 || isNumeric(customerNo)==false)
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk = false;
+		return;
+	}
+	
+	if ( trim(code).length == 0)
+	{
+		alert ("Bitte geben Sie Ihre Code-Nr. bzw. Ihr Passwort an.");
+		checkOk = false;
+		return;
+	}
+	
+	
+	if ( checkOk)
+	{
+		document.inputBerater.userField2.value = customerNo;
+		document.inputBerater.submit();
+	}
+}
+
+function prepareCustomerNo(customerNo)
+{
+	customerNo = customerNo.replace(/^ */,"");
+	customerNo = customerNo.replace(/ *$/,"");
+	var i = customerNo.indexOf('/');
+	if(i == -1) { i = customerNo.indexOf('\\'); }
+	if(i == -1) { i = customerNo.indexOf('-'); }
+	if(i != -1) { customerNo = customerNo.substr(i + 1); }
+	customerNo = customerNo.replace(/^0*/,"");
+	return customerNo;
+}
+
+
+function checkChallengeForm()
+{
+	var logonid = document.ResetPasswordForm.logonIdShow.value;
+	var email = document.ResetPasswordForm.challengeAnswer.value;
+	var checkOk = true;
+		
+	if ( trim(logonid)==0 || isNumeric(logonid)==false )
+	{
+		alert ("Bitte geben Sie Ihre LR-CARD-Nummer an.");
+		checkOk=false;
+		return;
+	}
+	
+	if ( trim(email)==0 )
+	{
+		alert ("Bitte geben Sie die E-Mail-Adresse an.");
+		checkOk=false;
+		return;
+	}
+	
+	if ( checkOk )
+	{
+		document.ResetPasswordForm.logonId.value = "01/"+logonid;
+		document.ResetPasswordForm.submit();
+	}
+	
+}
+
+/* ab hier PopUp-Definitionen */
+
+var F0;
+function variant_popup ( url )
+{
+   	F0 = popup=window.open( url, "variantWindow", "width=500,height=450,left=200,top=150, resizable=yes, scrollbars=yes");
+   	F0.focus();
+}
+
+var F1;
+function addCollectionOrderer(page, title)
+{
+	if(F1==null || F1.closed==true){
+ 		F1 = window.open(page, title, 'width=400,height=450,left=100,top=100, resizible=yes, menubar=no, scrollbars=yes, status=no, toolbar=no');
+	}else{
+		F1.focus();
+	}
+}
+
+var F2;
+function checkContactPagePopUpForOpen()
+{
+	 if(F2==null || F2.closed==true){
+	 	F2 = window.open('LRInteressent','Kundenkontakt', 'width=620,height=550,left=100,top=100, resizible=yes, menubar=no, scrollbars=no, status=no, toolbar=no');
+	 }else{
+	 	F2.focus();
+	 }
+}
+
+var TRANSLATION_POPUP;
+function showPageTranslation(url){
+	//alert(url);
+	TRANSLATION_POPUP=window.open(url, "TranslationPage", "width=700, height=500, resizable=yes, scrollbars=yes");
+	TRANSLATION_POPUP.focus();
+}
+
+function luhnCheck(cardnumber)
+{
+		if (cardnumber.length != 16)
+			return false;
+
+		var weight = 2;
+		var sum = 0;
+		for (position = cardnumber.length - 2; position >= 0; position--) {
+			digit = weight * cardnumber.charAt(position);
+			if (digit < 0)
+				return false;
+
+			sum += parseInt(digit / 10 + digit % 10);
+			weight = weight != 2 ? 2 : 1;
+		}
+
+		last_digit = cardnumber.charAt(cardnumber.length - 1);
+		return last_digit == (10 - sum % 10) % 10;
+}
+
+function checkCVC(cvc)
+{
+	 if ( cvc==null || cvc.length!=3 || ! cvc.match(/^\d+$/))
+	 	return false;
+	 else
+	 	return true;
+}
+
+function checkExpiryDate(cardmonth, cardyear)
+{
+	if(cardmonth.length==0){
+			alert("Gültigkeitsdatum: Monatsangabe fehlt.");
+			return false;
+	}else if(cardyear.length==0){
+			alert("Gültigkeitsdatum: Jahresangabe fehlt.");
+			return false;
+    }else{			
+		var today=new Date();
+		var month=today.getMonth()+1;
+		var year=today.getFullYear();
+	 	if ( (cardyear==year) && (cardmonth<month) ){
+			alert("Das Gültigkeitsdatum liegt in der Vergangenheit!");
+    		return false;
+    	}
+	}      		
+	return true;
+}      		
+
+function checkCreditCard(brand, number, cvc, month, year)
+{
+	if(brand.length!=1 || !luhnCheck(number) || !checkCVC(cvc) || !checkExpiryDate(month, year))
+		return false;
+	else
+		return true;
+}
+
+function switchDisplay(id)
+{
+	obj=document.getElementById(id);
+	if(obj.style.display=='none')
+		obj.style.display='';
+	else
+		obj.style.display='none';
+}
+
+/*
+var F10;
+function showPageTranslation ( url )
+{
+   	F10 = popup=window.open( url, "TranslationPage", "width=500, height=450, resizable=yes, scrollbars=yes");
+   	F10.focus();
+}
+*/
+
+function getPosition(element)
+/* der Aufruf dieser Funktion ermittelt die absoluten Koordinaten
+   des Objekts element */
+{
+	  var elem=element,tagname="",x=0,y=0;
+	  
+	/* solange elem ein Objekt ist und die Eigenschaft offsetTop enthaelt
+	   wird diese Schleife fuer das Element und all seine Offset-Eltern ausgefuehrt */
+	  while ((typeof(elem)=="object")&&(typeof(elem.tagName)!="undefined"))
+	  {
+	    y+=elem.offsetTop;     /* Offset des jeweiligen Elements addieren */
+	    x+=elem.offsetLeft;    /* Offset des jeweiligen Elements addieren */
+	    tagname=elem.tagName.toUpperCase(); /* tag-Name ermitteln, Grossbuchstaben */
+	
+	/* wenn beim Body-tag angekommen elem fuer Abbruch auf 0 setzen */
+	    if (tagname=="BODY")
+	      elem=0;
+	
+	/* wenn elem ein Objekt ist und offsetParent enthaelt
+	   Offset-Elternelement ermitteln */
+	    if (typeof(elem)=="object")
+	      if (typeof(elem.offsetParent)=="object")
+	        elem=elem.offsetParent;
+  }
+
+/* Objekt mit x und y zurueckgeben */
+  position=new Object();
+  position.x=x;
+  position.y=y;
+  return position;
+}
+
+function alertPosition(elementId)
+	/* gibt eine Meldung mit x und y des zu elementId gehoerenden Elements aus */
+	{
+	  var a,element;
+	
+	/* Element-Objekt zur ID ermitteln */
+	  element=document.getElementById(elementId);
+	 
+	/* Position bestimmen und melden */
+	  a=getPosition(element);
+	  window.alert("Position "+elementId+": ("+a.x+","+a.y+")");
+}
+
+function resizeWinTo( idOfDiv) 
+{
+        var inc=10;
+        var addWidth=10;
+        var oH = getRefToDivMod( idOfDiv ); if( !oH ) { return false; }
+        var oW = oH.clip ? oH.clip.width : oH.offsetWidth;
+        var oH = oH.clip ? oH.clip.height : oH.offsetHeight; if( !oH ) { return false; }
+        var x = window; x.resizeTo( oW + inc, oH + inc );
+        var myW = 0, myH = 0, d = x.document.documentElement, b = x.document.body;
+        if( x.innerWidth ) { myW = x.innerWidth; myH = x.innerHeight; }
+        else if( d && d.clientWidth ) { myW = d.clientWidth; myH = d.clientHeight; }
+        else if( b && b.clientWidth ) { myW = b.clientWidth; myH = b.clientHeight; }
+        if( window.opera && !document.childNodes ) { myW += 16; }
+        x.resizeTo( oW + addWidth + ( ( oW + inc ) - myW ), oH + addWidth + ( (oH + inc ) - myH ) );
+        /*
+        x.resizeTo( oW = oW +( ( oW + inc ) - myW ), oH = oH +( (oH + inc ) - myH ) );
+        var scW = screen.availWidth ? screen.availWidth : screen.width;
+        var scH = screen.availHeight ? screen.availHeight : screen.height;
+        x.moveTo(Math.round((scW-oW)/2),Math.round((scH-oH)/2));
+        */
+}
+
+function getRefToDivMod( divID, oDoc ) 
+{
+	if( !oDoc ) { oDoc = document; }
+	if( document.layers ) {
+        if( oDoc.layers[divID] ) { return oDoc.layers[divID]; } else {
+            for( var x = 0, y; !y && x < oDoc.layers.length; x++ ) {
+                    y = getRefToDivNest(divID,oDoc.layers[x].document); }
+            return y; } }
+	if( document.getElementById ) { return oDoc.getElementById(divID); }
+	if( document.all ) { return oDoc.all[divID]; }
+	return document[divID];
+}
+// -->
+</script>
+
+
+
+    <script src="./Zeitgard_files/prototype.js" type="text/javascript"></script>
+    <script src="./Zeitgard_files/scriptaculous.js" type="text/javascript"></script><script type="text/javascript" src="./Zeitgard_files/effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Zeitgard_files/basic.css">
+    <link rel="stylesheet" type="text/css" href="./Zeitgard_files/shop.css">
+    
+
+
+
+
+
+<!-- -----------------TYPO SCRIPT part (start)-------------------- -->
+
+<script type="text/javascript" src="./Zeitgard_files/jquery-1.4.2.min.js"></script>
+<!-- -----------------TYPO SCRIPT part (end)-------------------- -->
+
+
+    <link rel="stylesheet" type="text/css" href="./Zeitgard_files/views.css"> 
+
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+<!-- BODY -->
+
+
+
+
+
+
+
+<!--TYPO BODY 1 part (start)-->
+<body class="home smallHeader">
+<!--TYPO BODY 1 part (end)-->
+
+
+<div id="overDiv" style="position: absolute; visibility: hidden; z-index: 1000;"></div>
+
+
+<div id="completeDisplay">
+    
+
+
+
+
+
+
+<!--TYPO BODY 2 part (start)-->
+<div id="top">
+    <div id="greeting">
+            <p>
+                Shop en ligne <span>LR Belgium</span><br>
+                <span>Monsieur Khassan Khadiev</span>
+            </p>
+            <a href="https://shop.lrworld.com/lrshop/logout.do?country=BE_fr" class="button">Se déconnecter</a>
+        </div>
+        <!-- TOPNAV (start) -->
+        <div id="topNav">
+            <ul>
+                <li class="linkPublic"><a href="http://www.lrworld.com/fr/" target="_blank">Voir la page d'accueil LR</a></li>
+                <li class="linkExtranet"><a href="https://www.my-lrworld.com/fr/">Voir le portail pour partenaires</a></li>
+            </ul>
+        </div>
+        <!-- TOPNAV (end) -->
+    </div>
+    <div id="wrapper">
+        <div id="header">
+            <a id="home" href="https://shop.lrworld.com/lrshop/chooseCatalog.do">Accueil</a>
+            <div id="teaser">
+                <div class="slide" style="background-image:url(https://www.my-lrworld.com/fileadmin/my-lrworld/content/global/Shop/Header_Shop.jpg);"></div>
+            </div>
+            <div id="mainNav">&nbsp;</div>
+        </div>
+<!--TYPO BODY 2 part (end)-->
+
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" id="breadcrum" style="padding-right: 134px;">
+        <tbody><tr>
+            
+                
+                <td style="width: 200px;"></td>
+            
+            <td align="left">
+                
+                    <a href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1905">Collection Beauté</a>
+                    <a href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1905&categoryKey=37481">&nbsp;&nbsp;/&nbsp;&nbsp;Zeitgard</a>
+                
+            </td>
+        </tr>
+    </tbody></table>
+    <table id="contentTable" cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <tr>
+                <td valign="top">
+                	
+                	
+              
+                		
+
+
+
+
+
+
+
+
+<!-- BEG - menu left -->
+
+
+<table cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr>
+        <td align="left" valign="top" style="border: 1px solid #B2B5B7;">
+            <table style="width: 174px; cursor: pointer; background-image: url(https://shop.lrworld.com/lrshopStatic/images_NEW/shop/warenkorb_emptyX.jpg)" cellspacing="3">
+                <tbody><tr style="height: 93px;" onclick="javascript:window.location=&#39;/lrshop/showQuickEntry.do&#39;;">
+                    <td valign="top" align="left">Contenu de votre panier<br>
+                        0&nbsp;Article | 0,00 €
+                        <br><br><a href="https://shop.lrworld.com/lrshop/showQuickEntry.do" style="font-size: 11px;">Panier &amp;<br>Commande<br>Express</a>
+                    </td>
+                </tr>
+                <tr><td valign="bottom" align="left" id="searchformShop">
+
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+    function prepareSearchBox(){if (document.SearchFormShop.searchString.value=="Recherche")document.SearchFormShop.searchString.value="";}
+//--></script>
+
+
+
+<div id="searchformboxShop" align="left">
+    <span style="font-size: 10px;">Recherche produit: </span>
+    <form name="SearchFormShop" action="https://shop.lrworld.com/lrshop/search.do" method="post" style="margin: 0px; padding: 0px;">
+        <input maxlength="50" onfocus="javascript:prepareSearchBox()" name="searchString" type="text" value="Recherche" class="searching-form" style="float:left">
+        <input type="hidden" name="searchMode" value="0">
+        <input type="hidden" name="startingRow" value="">
+        <input type="image" name="tx_shop_indexedsearch__submit_button__" value="Submit" src="./Zeitgard_files/button_search.gif" id="tx_shop_indexedsearch__submit_button__" alt="search" style="padding-left: 2px;">
+    </form>
+</div></td></tr>
+            </tbody></table>
+        </td>
+    </tr>
+    
+    <tr>
+        <td id="subnaviContent">
+            
+<!-- BEG - JSP-Page: ceCatalogStructureMenu_jsp -->
+
+
+
+
+<!-- BEG - catalog/category structure -->
+<div>
+    <h2><a href="https://shop.lrworld.com/lrshop/chooseCatalog.do">LR-Shop</a><br><br></h2>
+    <ul>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1922">Collections</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1905">Collection Beauté</a>
+                
+                    
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37403">Maquillage Deluxe</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37424">Maquillage Colours</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37443">Parfums Femmes</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37444">Parfums Hommes</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37460">Living Moments</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                                <ul>
+                                	<li class="subnavi-content-0-active">
+                                		<a href="./Zeitgard_files/Zeitgard.html">Zeitgard</a>
+                                	</li>
+                                </ul>
+                            
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37482">Nanogold</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37483">Serox</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37484">Beauty Diamonds</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37485">Powerlift</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37486">Marcus Schenkenberg - Platinum</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37487">Racine</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37522">Algetics</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37524">Microsilver</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37526">Produits Capillaires</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                            
+                            
+                                <ul>
+                                    <li class="subnavi-content-0-notactive">
+                                    	<a href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37532">Aloe Vera</a>
+                                    </li>
+                                </ul>
+                            
+                        
+                     
+                    
+                    <br>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1894">Collection Santé</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1555">LR World Octobre 2015</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1904">Echantillons</a>
+                
+            </li>
+        
+            <li><a style="font-size:11px; font-weight: bold; padding-left: 3px; background: none;" href="https://shop.lrworld.com/lrshop/chooseCategory.do?catalogId=1899">Aides à la vente</a>
+                
+            </li>
+        
+    </ul>
+</div>
+<!-- END - catalog/category structure -->
+<!-- END - JSP-Page: ceCatalogStructureMenu_jsp -->
+            
+        </td>
+    </tr>
+    
+</tbody></table>
+<!-- END - menu left -->
+
+                	
+                </td>
+                <td valign="top" width="595" style="padding-left: 25px;">
+                    
+
+
+
+
+
+
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr><td><!--  BEG - category details -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td width="5">&nbsp;</td>
+        <td width="395" align="left" valign="top"><span class="headTitle">Zeitgard</span><br></td>
+        <td width="20">&nbsp;</td>
+        <td valign="top"><img width="175" height="95" src="./Zeitgard_files/b15_06_Zeitgard.jpg" alt="Category image"></td>
+    </tr>
+</tbody></table>
+<!--  END - category details --></td></tr>
+    <tr><td height="20">&nbsp;</td></tr>
+    <tr>
+        <td align="center">
+        
+            <table width="100%">
+                <tbody><tr><td height="10" style="border-top: 1px solid #B2B5B7">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_0">
+                        <td width="100%" id="product_70000">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25766&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="Zeitgard Cleansing System Gel " alt="Zeitgard Cleansing System Gel " border="0" src="./Zeitgard_files/70000_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Zeitgard Cleansing System Gel </b><br>
+                                        <span id="effect_70000" ondblclick="alert(&#39;70000 | 0070000000 | 001&#39;)">Art. N°&nbsp;70000</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 14,16 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 11,70 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 19,00 GV: 10,76<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25766&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_0" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_0" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70000">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070000000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_0)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_0)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_0)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_1">
+                        <td width="100%" id="product_70001">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25767&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="Zeitgard Cleansing System Crème " alt="Zeitgard Cleansing System Crème " border="0" src="./Zeitgard_files/70001_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Zeitgard Cleansing System Crème </b><br>
+                                        <span id="effect_70001" ondblclick="alert(&#39;70001 | 0070001000 | 001&#39;)">Art. N°&nbsp;70001</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 14,16 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 11,70 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 19,00 GV: 10,76<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25767&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_1" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_1" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70001">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070001000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_1)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_1)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_1)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_2">
+                        <td width="100%" id="product_70003">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25768&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="Brosse Classic avec FS" alt="Brosse Classic avec FS" border="0" src="./Zeitgard_files/70003_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Brosse Classic avec FS</b><br>
+                                        <span id="effect_70003" ondblclick="alert(&#39;70003 | 0070003000 | 001&#39;)">Art. N°&nbsp;70003</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 19,97 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 16,50 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 27,00 GV: 14,96<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25768&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_2" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_2" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70003">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070003000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_2)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_2)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_2)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_3">
+                        <td width="100%" id="product_70004">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25769&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="Brosse Soft avec FS" alt="Brosse Soft avec FS" border="0" src="./Zeitgard_files/70004_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>Brosse Soft avec FS</b><br>
+                                        <span id="effect_70004" ondblclick="alert(&#39;70004 | 0070004000 | 001&#39;)">Art. N°&nbsp;70004</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 19,97 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 16,50 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 27,00 GV: 14,96<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25769&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_3" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_3" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70004">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070004000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_3)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_3)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_3)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_4">
+                        <td width="100%" id="product_70010">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25770&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="ZEITGARD Clean. System Set Classic" alt="ZEITGARD Clean. System Set Classic" border="0" src="./Zeitgard_files/70010_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ZEITGARD Clean. System Set Classic</b><br>
+                                        <span id="effect_70010" ondblclick="alert(&#39;70010 | 0070010000 | 004&#39;)">Art. N°&nbsp;70010</span><br><br>
+                                        <p class="MsoListParagraph" style="MARGIN: 0cm 0cm 0pt 54pt; TEXT-INDENT: -18pt; mso-list: l0 level1 lfo1"><span lang="FR" style="FONT-SIZE: 12pt; FONT-FAMILY: &#39;Times New Roman&#39;,&#39;serif&#39;; mso-ansi-language: FR; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><span lang="FR" style="FONT-SIZE: 12pt; FONT-FAMILY: &#39;Times New Roman&#39;,&#39;serif&#39;; mso-ansi-language: FR; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"></span></span>&nbsp;</p>
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 167,83 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 138,70 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 250,00 GV: 125,00<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25770&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_4" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_4" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70010">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070010000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_4)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_4)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_4)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_5">
+                        <td width="100%" id="product_70011">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25771&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="ZEITGARD Clean. System Set Soft" alt="ZEITGARD Clean. System Set Soft" border="0" src="./Zeitgard_files/70011_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ZEITGARD Clean. System Set Soft</b><br>
+                                        <span id="effect_70011" ondblclick="alert(&#39;70011 | 0070011000 | 004&#39;)">Art. N°&nbsp;70011</span><br><br>
+                                        <p><span lang="FR" style="FONT-SIZE: 12pt; FONT-FAMILY: &#39;Times New Roman&#39;,&#39;serif&#39;; mso-ansi-language: FR; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"></span>&nbsp;</p>
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 167,83 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 138,70 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 250,00 GV: 125,00<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25771&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_5" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_5" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70011">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070011000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_5)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_5)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_5)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_6">
+                        <td width="100%" id="product_70012">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25772&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="ZEITGARD Classic Kit de Recharge" alt="ZEITGARD Classic Kit de Recharge" border="0" src="./Zeitgard_files/70012_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ZEITGARD Classic Kit de Recharge</b><br>
+                                        <span id="effect_70012" ondblclick="alert(&#39;70012 | 0070012000 | 004&#39;)">Art. N°&nbsp;70012</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 56,39 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 46,60 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 65,00 GV: 36,24<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25772&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_6" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_6" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70012">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070012000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_6)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_6)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_6)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+                
+                    <tr id="bestellen_7">
+                        <td width="100%" id="product_70013">
+                            <table width="100%" cellpadding="0" cellspacing="20" border="0">
+                                <tbody><tr>
+                                    <td rowspan="2" valign="top" align="center" width="110" height="100%">
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25773&catalogId=1905&categoryKey=37481">
+                                         
+                                        
+                                            <img title="ZEITGARD Soft Kit de Recharge" alt="ZEITGARD Soft Kit de Recharge" border="0" src="./Zeitgard_files/70013_90.jpg">
+                                        
+                                        
+                                        </a>
+                                    </td>
+                                    <td valign="top" align="left" width="50%">
+                                        <b>ZEITGARD Soft Kit de Recharge</b><br>
+                                        <span id="effect_70013" ondblclick="alert(&#39;70013 | 0070013000 | 004&#39;)">Art. N°&nbsp;70013</span><br><br>
+                                        
+                                        <!--
+                                        
+                                         -->
+                                    </td>
+                                    <td valign="top" align="left">
+
+
+
+
+
+ 
+    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+        
+        
+            <tbody><tr><td align="left"><b>PA-Brut: 56,39 €</b><br>
+                <span style="font-size: 10px;">(PA-Net: 46,60 €)
+                     
+                </span><br></td></tr>
+            <tr><td style="height: 20px;" align="left">&nbsp;</td></tr>
+            <tr><td align="left">PV: 65,00 GV: 36,24<br></td></tr>
+            
+            <tr><td style="height: 20px;">&nbsp;</td></tr>
+            
+                
+                
+                
+            
+            
+        
+        
+        
+    </tbody></table>
+</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" align="left">
+                                        
+                                        
+                                            <a href="https://shop.lrworld.com/lrshop/showProductDetails.do?productId=25773&catalogId=1905&categoryKey=37481">Voir les détails</a>
+                                        
+                                    </td>
+                                    <td valign="bottom" align="left">
+                                        <form name="bestellen_7" action="https://shop.lrworld.com/lrshop/shoppingCartInsertAction.do#bestellen_7" method="post">
+                                            <input type="hidden" name="catalogId" value="1905">
+                                            <input type="hidden" name="categoryKey" value="37481">
+                                            <input type="hidden" name="articleNo" value="70013">
+                                            <input type="hidden" name="variantNo" value="0">
+                                            <input type="hidden" name="itemNo" value="0070013000">
+                                            <input type="hidden" name="method" value="addItem">
+                                            
+
+<table border="0" cellpadding="0" cellspacing="0">
+	
+		
+			
+			
+			
+				<!-- is NOT a box product -->
+				
+					
+						<tbody><tr>
+							<td align="left">Qté:&nbsp;</td>
+							<td align="left"><input name="quantity" style="font-size: 10px;" size="1" class="display" value="1" maxlength="3"></td>
+							<td valign="middle" align="left"><a href="javascript:countup(document.bestellen_7)"><img src="./Zeitgard_files/count_up.gif" width="14" height="9" title="plus" alt="plus 1"></a><br><a href="javascript:countdown(document.bestellen_7)"><img src="./Zeitgard_files/count_down.gif" width="14" height="9" title="moins" alt="minus 1"></a></td>
+							<td>&nbsp;&nbsp;</td>
+							<td align="left"><a href="javascript:checkquantity(document.bestellen_7)"><img src="./Zeitgard_files/warenkorb.gif" title="ajouter au panier" alt="add to cart"> </a>&nbsp;</td>
+						</tr>
+					
+					
+				
+				
+			
+		
+	
+</tbody></table>
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7115594ca6e88c38ca12cc1e7234be8b">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr><td height="10" style="border-top: 1px solid #B2B5B7;">&nbsp;</td></tr>
+                
+                
+            </tbody></table>
+        
+        
+        </td>
+    </tr>
+</tbody></table>
+<script type="text/javascript">
+<!--
+var lnk=window.location.href;
+if(lnk.indexOf('#bestellen')!=-1)
+{
+    var ankerpos=lnk.indexOf('#');
+    var ankerid=lnk.substr(ankerpos+1);
+    new Effect.Highlight(ankerid, {duration:2, startcolor: "#BCD0A1"});
+}
+else if(lnk.indexOf('#product_')!=-1)
+{
+    var ankerpos=lnk.indexOf('#product_');
+    var ankerid=lnk.substr(ankerpos+9);
+    ankerid='effect_' + ankerid;
+    new Effect.Scale( ankerid, 300,{duration: 2.0, transition: Effect.Transitions.reverse});
+}
+//-->
+</script>
+                </td>
+            </tr>
+        </tbody>
+    </table><br><br>
+    
+
+
+
+
+
+
+<!--TYPO FOOTER part (start)-->
+    <div id="pageFooter">
+        <a id="lrgkf" href="http://www.lr-global-kids-fund.com/" target="_blank">LR GLOBAL KIDS FUND</a>
+        <div id="footerAction">
+            <a id="print" href="https://shop.lrworld.com/lrshop/browseCatalog.do?catalogId=1905&categoryKey=37481#" onclick="window.print(); return false;">Imprimer</a>
+        </div>
+        <ul><li><a href="http://www.my-lrworld.com/fr/belgium/imprint/">Imprint</a></li><li><a href="http://shop.lrworld.com/lrshopStatic/html/BE/fr/agb.html">AGBs</a></li><li><a href="http://www.my-lrworld.com/fr/belgium/contact/">Contact</a></li></ul>
+    </div>
+</div>
+<div id="copyright">Copyright: LR Health &amp; Beauty Systems, 2011</div>
+<!--TYPO FOOTER part (end)-->
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://ssl.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+	var pageTracker = _gat._getTracker("UA-1717611-3");	pageTracker._trackPageview();
+	var pageTracker2 = _gat._getTracker("UA-1717611-5"); pageTracker2._setDomainName(".lrworld.com"); pageTracker2._setAllowHash(false); pageTracker2._trackPageview();
+} catch(err) {}	
+</script>
+
+<!-- END - JSP-Page: siteLayout_jsp -->
+
+</body></html>
